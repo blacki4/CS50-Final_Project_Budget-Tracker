@@ -1,6 +1,6 @@
 # Personal Budget Tracker
 
-#### Video Demo: <YOUR VIDEO URL HERE>
+#### Video Demo: [Project Video](https://youtu.be/ozGZeTTJ9NQ)
 
 #### Description:
 
@@ -25,8 +25,32 @@ The project is implemented using Flask for the backend, SQLite for the database,
 - `database.db`: SQLite database containing users and transactions tables.
 - `requirements.txt`: Python dependencies for Flask and SQLite.
 
-#### Design Choices:
+#### Installation & Usage
 
-The choice of Flask and SQLite was based on their simplicity and ease of integration for small web projects. JavaScript was used to enhance user interactivity on the frontend, including dynamic charts and transaction filtering. Security considerations were taken into account by using sessions for user authentication.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/finance-tracker.git
+   cd finance-tracker
+   ```
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+    source venv/bin/activate   # On macOS/Linux
+    venv\Scripts\activate      # On Windows
 
-This project demonstrates practical application of all concepts learned in CS50, including data handling, backend development, and frontend design. It also provides a tangible solution to a real-world problem, helping users manage their finances efficiently.
+    pip install -r requirements.txt
+   ```
+3. Initialize the database:
+   ```bash
+   sqlite3 database.db < schema.sql
+   ```
+4. Run the Flask server:
+   ```bash
+   python app.py
+   ```
+5. Open the app in your browser:
+    ```bash
+    http://127.0.0.1:5000
+    ```
+    
+
