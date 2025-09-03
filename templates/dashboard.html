@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hello, {{ session['username'] }}</h2>
+
+      <div
+        class="dashboard-flex {% if transactions|length == 0 %}single-column{% endif %}"
+      >
+        <!-- Left side: Form + Logout + Table -->
+        <div class="left-side">
+          <h3>Add Transaction</h3>
+          <form method="POST" action="/add" class="transaction-form">
+            <input
+              type="number"
+              step="0.01"
+              name="amount"
+              placeholder="Amount"
+              required
+            />
+            <input
+              type="text"
+              name="category"
+              placeholder="Category"
+              required
+            />
+            <input type="date" name="date" required />
+            <select name="type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+            <button type="submit" class="btn">Add</button>
+          </form>
+
+          {% if transactions|length > 0 %}
+          <h3>Transactions</h3>
+          <table>
+            <tr>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+            {% for t in transactions %}
+            <tr>
+              <td>{{ t['amount'] }}</td>
+              <td>{{ t['category'] }}</td>
+              <td>{{ t['date'] }}</td>
+              <td>{{ t['type'] }}</td>
+              <td><a href="/delete/{{ t['id'] }}" class="btn">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+          <a href="/logout" class="btn logout-btn">Logout</a>
+        </div>
+
+        {% if transactions|length > 0 %}
+        <!-- Right side: Charts -->
+        <div class="right-side">
+          <h3>Expense & Income Summary</h3>
+          <div class="charts">
+            <canvas id="expenseChart"></canvas>
+            <canvas id="incomeChart"></canvas>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
