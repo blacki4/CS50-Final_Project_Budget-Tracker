@@ -11,10 +11,19 @@ The project is implemented using Flask for the backend, SQLite for the database,
 #### Features:
 
 1. **User Authentication**: Secure login and registration.
-2. **Transaction Management**: Add, edit, and delete income or expense transactions.
+2. **Transaction Management**: Add and delete income or expense transactions.
 3. **Dashboard Overview**: View summaries of total income, total expenses, and remaining budget.
 4. **Visual Analytics**: Graphical representation of spending by categories.
 5. **Search & Filter**: Find transactions by category or date.
+
+> ⚠️ **Note**: Passwords are currently stored in plain text (for learning purposes). This is not secure for production use.  
+
+
+#### Tech Stack
+1. Python(Flask)
+2. SQLite
+3. HTML5,CSS3,JavaScript
+4. Chart.js
 
 #### Project Structure:
 
@@ -29,8 +38,8 @@ The project is implemented using Flask for the backend, SQLite for the database,
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/finance-tracker.git
-   cd finance-tracker
+   git clone https://github.com/blacki4/CS50-Final_Project_Budget-Tracker.git
+   cd CS50-Final_Project_Budget-Tracker
    ```
 2. Create a virtual environment and install dependencies:
    ```bash
@@ -40,9 +49,38 @@ The project is implemented using Flask for the backend, SQLite for the database,
 
     pip install -r requirements.txt
    ```
-3. Initialize the database:
+3. Initialize the database (open Python shell and paste the following code):
    ```bash
-   sqlite3 database.db < schema.sql
+   Python
+   
+   import sqlite3
+
+   conn = sqlite3.connect("database.db")
+   cursor = conn.cursor()
+   
+   cursor.execute("""
+   CREATE TABLE IF NOT EXISTS users (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       username TEXT UNIQUE NOT NULL,
+       password TEXT NOT NULL
+   )
+   """)
+   
+   cursor.execute("""
+   CREATE TABLE IF NOT EXISTS transactions (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       user_id INTEGER,
+       amount REAL,
+       category TEXT,
+       date TEXT,
+       type TEXT,
+       FOREIGN KEY(user_id) REFERENCES users(id)
+   )
+   """)
+   
+   conn.commit()
+   conn.close()
+
    ```
 4. Run the Flask server:
    ```bash
@@ -52,5 +90,9 @@ The project is implemented using Flask for the backend, SQLite for the database,
     ```bash
     http://127.0.0.1:5000
     ```
-    
+
+## Acknowledgements
+This project was built as part of Harvard’s CS50 course.  
+I also used AI tools like ChatGPT and Claude to improve parts of the code and documentation.  
+
 
