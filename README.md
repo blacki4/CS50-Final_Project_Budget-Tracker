@@ -4,9 +4,23 @@
 
 #### Description:
 
-Personal Budget Tracker is a web application designed to help users manage their personal finances effectively. Users can register and log in to their accounts, add income and expenses, categorize transactions, and visualize their spending patterns through charts. The application provides a simple yet powerful interface to monitor monthly budgets, ensuring that users have full control over their financial habits.
+Personal Budget Tracker is a comprehensive web application designed to help users effectively manage their personal finances. The primary goal of the project is to allow users to track their income and expenses, categorize their transactions, and visualize their financial habits over time. By providing an intuitive interface, the application empowers users to make informed decisions about their spending, saving, and budgeting.
 
-The project is implemented using Flask for the backend, SQLite for the database, and a combination of HTML, CSS, and JavaScript for the frontend. The main goal was to create a user-friendly application that is functional, visually appealing, and demonstrates good programming practices learned throughout the CS50 course.
+The application begins with a user authentication system where users can securely register for a new account or log in to an existing one. This ensures that each user's financial data is private and isolated. While passwords are currently stored in plain text for learning purposes, this implementation demonstrates the authentication process, and in production, proper hashing and security measures would be applied.
+
+Once logged in, users have access to the dashboard, which serves as the central hub for all financial activities. Here, users can add income and expense transactions, specifying the amount, category, date, and type of transaction. The application organizes these transactions efficiently in a database, allowing users to view them in a chronological order and easily manage their finances. Users can also delete transactions if a mistake was made, providing flexibility in maintaining accurate records.
+
+A core feature of the dashboard is visual analytics, which gives users graphical representations of their spending by category. Using Chart.js, the application generates charts that illustrate how money is distributed across various categories such as food, entertainment, bills, and more. This visual representation helps users quickly identify patterns in their spending and make informed financial decisions. Additionally, the search and filter functionality allows users to locate specific transactions by category or date, further improving usability and efficiency.
+
+The project leverages Flask as the backend framework to handle HTTP requests, manage sessions, and interact with the SQLite database. Flask provides a lightweight yet powerful framework that allows clear separation between the frontend and backend logic. The database contains two main tables: users and transactions. The users table stores account information, while the transactions table stores detailed records of income and expenses. Each transaction is linked to a specific user through a foreign key, ensuring data integrity and privacy.
+
+The frontend is built using HTML, CSS, and JavaScript, providing a clean and responsive interface. Custom CSS ensures the application is visually appealing and user-friendly, while JavaScript handles dynamic interactions, such as updating the charts in real-time or filtering transactions without reloading the page. This combination of technologies demonstrates a full-stack approach and applies multiple concepts learned throughout the CS50 course, including web development, data handling, and user interface design.
+
+During development, several design decisions were made to balance functionality and simplicity. Flask was chosen over heavier frameworks to maintain focus on core functionality and to demonstrate backend handling. SQLite was selected for its simplicity and ease of integration within a small-scale project. Chart.js was used because it allows clean and interactive chart visualizations with minimal setup, providing users immediate feedback on their financial data.
+
+The project also emphasizes good programming practices, including modular code organization, clear naming conventions, and detailed comments in the code. AI tools like ChatGPT and Claude were utilized to optimize sections of code and improve documentation, ensuring clarity and maintainability without compromising the integrity of the work.
+
+Overall, Personal Budget Tracker is not only a practical tool for everyday financial management but also a demonstration of key skills in web development, database management, and full-stack application design. By completing this project, users learn the importance of data organization, visual analytics, and user experience in creating effective software solutions. This project reflects the knowledge gained from CS50 and provides a solid foundation for more advanced web applications in the future.
 
 #### Features:
 
